@@ -4,6 +4,8 @@ import 'package:ust/Components/Pages/ResultScreen.dart';
 import 'package:ust/commons/color.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ust/commons/images.dart';
+import 'package:sliver_header_delegate/sliver_header_delegate.dart';
+import 'dart:math';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,74 +13,115 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
-    return Scaffold(
-      backgroundColor: base,
-      appBar: AppBar(
-        backgroundColor: base,
-        title: Image.asset(logoImg),
-        centerTitle: true,
-        actions: [
-          Container(
-            width: w*0.4,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Results()),
-              );
-            },
-            child: Text('Résultats', style: TextStyle(color: text),),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Classement()),
-              );
-            },
-            child: Text('Classement', style: TextStyle(color: text)),
-          ),
-            ],
-          ),
-          )
-        ],
-      ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: w * 0.5,
-                child: CarouselSlider(
-                    options: CarouselOptions(
-                      height: w * 0.33,
-                      aspectRatio: 16 / 9,
-                      viewportFraction: 0.9,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration: Duration(milliseconds: 1000),
-                      autoPlayCurve: Curves.decelerate,
-                      enlargeCenterPage: true,
-                      scrollDirection: Axis.horizontal,
-                    ),
-                    items: [1, 2, 3, 4].map((i) {
-                      return Builder(builder: (BuildContext context) {
-                        return Container( width: w*0.6, height: w*0.1, color: Colors.blue,);
-                      });
-                    }).toList())),
-                    Container(
-                      child: Text('La montée de l\'USToucy en R3 !', style: TextStyle(fontSize: w*0.03),),
-                    )
-            ],
-          )
-        ],
-      ),
-    );
+    return Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [red, yellow])),
+        child:  Scaffold(
+          backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                leading: Container(child:Image.asset(logoImg)),
+                backgroundColor: Colors.transparent,
+                toolbarHeight: 100,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(20))),
+                title: Text(
+                  'USToucy',
+                ),
+                centerTitle: true,
+                actions: [
+                  Row(
+                    children: [
+                      Container(
+                        height: w*0.03,
+                        width: w*0.08,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              blurRadius: 2,
+                              spreadRadius: 3,
+                              color: red)
+                        ], color: red),
+                        child: Text('Résultats')
+                      ),
+                      SizedBox(
+                        width: w*0.1,
+                      ),
+                      Container(
+                        height: w*0.03,
+                        width: w*0.08,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              blurRadius: 2,
+                              spreadRadius: 3,
+                              color: red)
+                        ], color: red),
+                        child: Text('Classements')
+                      ),
+                      SizedBox(
+                        width: 26,
+                      )
+                    ],
+                  )
+                ],
+              ),
+              body: SingleChildScrollView(child: Column(
+                children: [
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: w*0.5,
+                          height: w*0.3,
+                          color: Colors.red,
+                        ),
+                        Container(
+                    child: Text('La montée de l\'USToucy en Régional 3 !'),
+                  )
+                      ]),
+                  ),
+
+                  SizedBox(height: w*0.1,),
+
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                        children: [
+                          Container(
+                            width: w*0.3,
+                          height: w*0.3,
+                          color: Colors.red,
+                          ),
+                          Container(child: Text('Text 1'),)
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: w*0.3,
+                          height: w*0.3,
+                          color: Colors.red,
+                          ),
+                          Container(child: Text('Text 1'),)
+                        ],
+                      )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),)
+              ),
+        );
   }
 }
