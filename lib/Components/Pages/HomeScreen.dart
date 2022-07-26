@@ -11,6 +11,7 @@ import 'package:ust/commons/images.dart';
 import '../widgets/Home.dart';
 
 class HomeScreen extends StatefulWidget {
+  
   HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;

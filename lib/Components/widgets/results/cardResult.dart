@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:ust/commons/color.dart';
 import 'package:ust/commons/images.dart';
 
-oneResult(BuildContext, context, date, score){
+oneResult(BuildContext, context, date, score, imgL,imgR){
   var w = MediaQuery.of(context).size.width;
   return Center(
     child: Container(
@@ -18,16 +18,16 @@ oneResult(BuildContext, context, date, score){
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            child: Image.asset(logoImg, width: w*0.07,),
+            child: Image.asset(imgL, width: w*0.05,),
           ),
           Column(
             children: [
-              Text(date, style: TextStyle(color: primaire, fontSize: w*0.02),),
-              Text(score, style: TextStyle(color: primaire, fontSize: w*0.04))
+              Text(date, style: TextStyle(color: primaire, fontSize: w*0.015),),
+              Text(score, style: TextStyle(color: primaire, fontSize: w*0.023))
             ],
           ),
           Container(
-            child: Image.asset(logoImg, width: w*0.07,),
+            child: Image.asset(imgR, width: w*0.05,),
           )
         ],
       )

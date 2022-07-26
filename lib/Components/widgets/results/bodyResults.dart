@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:ust/Components/widgets/results/cardResult.dart';
 import 'package:ust/Components/widgets/title.dart';
 import 'package:ust/commons/color.dart';
+import 'package:ust/commons/images.dart';
 
 bodyResults(BuildContext, context){
   var w =MediaQuery.of(context).size.width;
@@ -17,9 +18,9 @@ bodyResults(BuildContext, context){
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         title(BuildContext, context, 'Résultats', primaire),
-        oneResult(BuildContext, context, 'Le 27/06/2022', '8 - 0'),
-        oneResult(BuildContext, context, 'Le 27/05/2022', '2 - 1'),
-        oneResult(BuildContext, context, 'Le 27/04/2022', '3 - 6')
+        oneResult(BuildContext, context, 'Le 29/05/2022', '8 - 0', logoImg,champs),
+        oneResult(BuildContext, context, 'Le 22/05/2022', '2 - 4', sens, logoImg),
+        oneResult(BuildContext, context, 'Le 24/04/2022', '4 - 0', logoImg,sb)
         
       ],
     ),)

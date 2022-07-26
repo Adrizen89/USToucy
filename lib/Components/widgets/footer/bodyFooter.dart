@@ -1,6 +1,25 @@
 import 'package:flutter/widgets.dart';
 import 'package:ust/commons/color.dart';
 import 'package:ust/commons/images.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void _linkFb() async {
+    final Uri url = Uri.parse("https://www.facebook.com/UsToucyFootball");
+    if (await launchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw "Impossible de lancer le lien.";
+    }
+  }
+
+void _linkTwitter() async {
+    final Uri url = Uri.parse("https://twitter.com/toucyfootball");
+    if (await launchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      print("Impossible de lancer le lien.");
+    }
+  }
 
 bodyFooter(BuildContext, context) {
   var w = MediaQuery.of(context).size.width;
@@ -30,12 +49,12 @@ bodyFooter(BuildContext, context) {
                   style: TextStyle(
                       color: white,
                       fontWeight: FontWeight.bold,
-                      fontSize: w * 0.02),
+                      fontSize: w * 0.013),
                 ),
                 SizedBox(height: w*0.02,),
                 Text(
                   'La boutique en ligne !',
-                  style: TextStyle(color: white, fontSize: w * 0.015),
+                  style: TextStyle(color: white, fontSize: w * 0.01),
                 )
               ],
             ),
@@ -43,12 +62,12 @@ bodyFooter(BuildContext, context) {
               children: [
                 Text(
                   'USToucy',
-                  style: TextStyle(color: yellow, fontSize: w * 0.02),
+                  style: TextStyle(color: yellow, fontSize: w * 0.013),
                 ),
                 SizedBox(height: w*0.02,),
                 Text(
                   'Plus qu\'un club, une Famille !',
-                  style: TextStyle(color: white, fontSize: w * 0.018),
+                  style: TextStyle(color: white, fontSize: w * 0.01),
                 )
               ],
             ),
@@ -56,20 +75,30 @@ bodyFooter(BuildContext, context) {
               children: [
                 Text(
                   'Nos réseaux sociaux',
-                  style: TextStyle(color: white, fontSize: w * 0.02),
+                  style: TextStyle(color: white, fontSize: w * 0.013),
                 ),
                 SizedBox(height: w*0.02,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    GestureDetector(
+                      onTap: () {
+                        _linkFb();
+                      },
+                      child: Container(
                       width: w * 0.02,
                       child: Image.asset(fbImg),
+                    ),
                     ),
                     SizedBox(
                       width: w * 0.08,
                     ),
-                    Container(width: w * 0.02, child: Image.asset(twitterImg))
+                    GestureDetector(
+                      onTap: () {
+                        _linkTwitter();
+                      },
+                      child: Container(width: w * 0.02, child: Image.asset(twitterImg)),
+                    )
                   ],
                 )
               ],
